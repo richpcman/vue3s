@@ -42,13 +42,13 @@
             });
         },
         methods: {
-          update() {
-            
-           axios.put('http://localhost:8080/instructors/in28minutes/courses/'+ this.course.id,this.course)
-          .then(() => {
-           this.$router.push('/CourseList/');
-          });
+          update() {            
+           axios.put('http://localhost:8080/instructors/in28minutes/courses/'
+           + this.course.id,this.course);
+           
+           this.$router.push("/CourseList");
           }
+
         }
     }
     </script>
