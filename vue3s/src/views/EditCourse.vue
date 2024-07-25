@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form @submit.prevent="update">
     
         <table>
             <tr>
@@ -42,12 +42,16 @@
             });
         },
         methods: {
-          update() {            
-           axios.put('http://localhost:8080/instructors/in28minutes/courses/'
-           + this.course.id,this.course);
-           
-           this.$router.push("/CourseList");
-          }
+        update() {
+            axios.put('http://localhost:8080/instructors/in28minutes/courses/' + this.course.id, this.course)
+                .then(() => {
+                    this.$router.push('/courseList');
+                })
+                .catch(error => {
+                    this.errorMessage = 'Failed to update the course.';
+                    console.error(error);
+                });
+        }
 
         }
     }
